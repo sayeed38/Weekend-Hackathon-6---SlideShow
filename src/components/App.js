@@ -23,7 +23,7 @@ const App = (props) => {
         data-testid="button-restart"
         onClick={reset}
       >
-        restart
+        Restart
       </button>
       <div className={{ display: "flex" }}>
         <button disabled={!index > 0} onClick={prev} data-testid="button-prev">
