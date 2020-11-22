@@ -1,8 +1,8 @@
 import React, { Component, useState } from "react";
 import "../styles/App.css";
-import slides from "./../data";
 
-const App = () => {
+const App = (props) => {
+  console.log(props);
   const [index, setIndex] = useState(0);
   const reset = () => {
     setIndex(0);
@@ -18,7 +18,11 @@ const App = () => {
 
   return (
     <>
-      <button data-testid="button-restart" onClick={reset}>
+      <button
+        disabled={index === 0}
+        data-testid="button-restart"
+        onClick={reset}
+      >
         restart
       </button>
       <div className={{ display: "flex" }}>
@@ -26,11 +30,11 @@ const App = () => {
           Prev
         </button>
         <div>
-          <h1 data-testid="title">{slides(index).title}</h1>
-          <p data-testid="text">{slides(index).text}</p>
+          <h1 data-testid="title">{props(index).title}</h1>
+          <p data-testid="text">{props(index).text}</p>
         </div>
         <button
-          disabled={!index + 1 < slides.length}
+          disabled={!index + 1 < props.length}
           data-testid="button-next"
           onClick={next}
         >
