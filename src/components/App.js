@@ -2,7 +2,7 @@ import React, { Component, useState } from "react";
 import "../styles/App.css";
 
 const App = (props) => {
-  console.log(props);
+  const { slides } = props;
   const [index, setIndex] = useState(0);
   const reset = () => {
     setIndex(0);
@@ -30,11 +30,11 @@ const App = (props) => {
           Prev
         </button>
         <div>
-          <h1 data-testid="title">{props(index).title}</h1>
-          <p data-testid="text">{props(index).text}</p>
+          <h1 data-testid="title">{slides[index].title}</h1>
+          <p data-testid="text">{slides[index].text}</p>
         </div>
         <button
-          disabled={!index + 1 < props.length}
+          disabled={!(index + 1 < slides.length)}
           data-testid="button-next"
           onClick={next}
         >
